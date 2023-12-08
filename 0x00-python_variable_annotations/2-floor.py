@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
+'''Task 2's module'''
 
 
-import math
-
-def floor(n: float) -> float:
-    """
-    Returns the floor of a float.
-
+def floor(a: float) -> int:
+    '''Computes the floor of a floating-point number.
+    
     Args:
-        n (float): The input float.
+        a (float): The input floating-point number.
 
     Returns:
-        float: The floor of the input float.
-    """
-    return math.floor(n)
+        int: The floor of the input float as an integer.
+    '''
+    return int(a)
