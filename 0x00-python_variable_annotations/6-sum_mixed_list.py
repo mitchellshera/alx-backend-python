@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+'''Task 6 module'''
 
 
 from typing import List, Union
