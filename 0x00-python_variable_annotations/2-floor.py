@@ -4,7 +4,7 @@
 
 def floor(a: float) -> int:
     '''Computes the floor of a floating-point number.
-    
+
     Args:
         a (float): The input floating-point number.
 
