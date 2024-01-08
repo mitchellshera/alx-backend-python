@@ -21,10 +21,12 @@ class TestGithubOrgClient(unittest.TestCase):
             result = client.org()
 
         # Ensure get_json is called once with the expected argument
-        client.get_json.assert_called_once_with(GithubOrgClient.ORG_URL.format(org=org_name))
+        client.get_json.assert_called_once_with(
+            GithubOrgClient.ORG_URL.format(org=org_name))
 
         # Ensure the correct result is returned
         self.assertEqual(result, {'login': org_name})
+
 
 if __name__ == '__main__':
     unittest.main()
