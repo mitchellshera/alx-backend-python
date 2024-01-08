@@ -57,12 +57,10 @@ class TestMemoize(unittest.TestCase):
         """Test class for memoized methods."""
 
         def a_method(self):
-            """A method returning the constant value 42."""
             return 42
 
         @memoize
         def a_property(self):
-            """A memoized property using the `memoize` decorator."""
             return self.a_method()
 
     @patch.object(TestClass, 'a_method', return_value=42)
