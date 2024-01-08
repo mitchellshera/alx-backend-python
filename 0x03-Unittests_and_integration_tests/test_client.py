@@ -9,7 +9,8 @@ from client import GithubOrgClient
 
 
 class TestGithubOrgClient(unittest.TestCase):
-
+    '''class for testing GithubOrgClient'''
+    
     @patch('client.get_json', return_value={'login': 'dummy_org'})
     @parameterized.expand([
         ('google',),
