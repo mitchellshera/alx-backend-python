@@ -48,6 +48,7 @@ class TestGetJson(unittest.TestCase):
             request_get.assert_called_once_with(test_url)
 
 class TestMemoize(unittest.TestCase):
+    '''class for memoize'''
 
     class TestClass:
         def a_method(self):
@@ -59,6 +60,7 @@ class TestMemoize(unittest.TestCase):
 
     @patch.object(TestClass, 'a_method', return_value=42)
     def test_memoize(self, mock_a_method):
+        '''test memoize'''
         test_instance = self.TestClass()
 
         # Call a_property twice
