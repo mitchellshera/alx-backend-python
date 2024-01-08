@@ -48,19 +48,23 @@ class TestGetJson(unittest.TestCase):
             request_get.assert_called_once_with(test_url)
 
 class TestMemoize(unittest.TestCase):
-    '''class for memoize'''
+    """Test case for the `memoize` decorator."""
 
     class TestClass:
+        """Test class for memoized methods."""
+        
         def a_method(self):
+            """A method returning the constant value 42."""
             return 42
 
         @memoize
         def a_property(self):
+            """A memoized property using the `memoize` decorator."""
             return self.a_method()
 
     @patch.object(TestClass, 'a_method', return_value=42)
     def test_memoize(self, mock_a_method):
-        '''test memoize'''
+        """Test the behavior of the memoized property."""
         test_instance = self.TestClass()
 
         # Call a_property twice
@@ -73,6 +77,7 @@ class TestMemoize(unittest.TestCase):
         # Assert that the correct result is returned
         self.assertEqual(result1, 42)
         self.assertEqual(result2, 42)
+
 
 if  __name__ == '__main__':
     unittest.main()
