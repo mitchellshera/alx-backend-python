@@ -5,8 +5,8 @@
 import unittest
 from parameterized import parameterized
 from utils import access_nested_map, get_json
-from unittest.mock import patch
-
+from unittest.mock import patch, Mock
+from typing import Dict, Tuple, Union
 
 class TestAccessNestedMap(unittest.TestCase):
 
@@ -33,24 +33,20 @@ class TestGetJson(unittest.TestCase):
     '''class for testing get_json function'''
     
     @parameterized.expand([
-    ("http://example.com", {"payload": True}),
-    ("http://holberton.io", {"payload": False}),
+        ("http://example.com", {"payload": True}),
+        ("http://holberton.io", {"payload": False}),
     ])
+    def test_get_json(
+            self,
+            test_url: str,
+            test_payload: Dict,
+            ) -> None:
+        """Tests `get_json`'s output."""
+        attrs = {'json.return_value': test_payload}
+        with patch("requests.get", return_value=Mock(**attrs)) as request_get:
+            self.assertEqual(get_json(test_url), test_payload)
+            request_get.assert_called_once_with(test_url)
 
-    @patch('utils.requests.get')
-    def test_get_json(self, test_url, test_payload):
-        # Mock the get method of requests and set its return value
-        with patch('utils.requests.get') as mock_get:
-            mock_get.return_value.json.return_value = test_payload
-
-            # Call the get_json function with the test_url
-            result = get_json(test_url)
-
-            # Assert that the mocked get method was called exactly once with test_url as argument
-            mock_get.assert_called_once_with(test_url)
-
-            # Assert that the output of get_json is equal to test_payload
-            self.assertEqual(result, test_payload)
 
 if  __name__ == '__main__':
     unittest.main()
