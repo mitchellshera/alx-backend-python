@@ -28,11 +28,14 @@ class TestAccessNestedMap(unittest.TestCase):
 
         self.assertEqual(str(context.exception), expected_message)
 
-@parameterized.expand([
+
+class TestGetJson(unittest.TestCase):
+    '''class for testing get_json function'''
+    
+    @parameterized.expand([
     ("http://example.com", {"payload": True}),
     ("http://holberton.io", {"payload": False}),
-])
-class TestGetJson(unittest.TestCase):
+    ])
 
     @patch('utils.requests.get')
     def test_get_json(self, test_url, test_payload):
