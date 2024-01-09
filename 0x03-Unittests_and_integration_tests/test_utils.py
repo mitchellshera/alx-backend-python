@@ -10,7 +10,7 @@ from typing import Dict, Tuple, Union
 
 
 class TestAccessNestedMap(unittest.TestCase):
-
+    '''class for testing access_nested_map function'''
     @parameterized.expand([
         ({"a": 1}, ["a"], 1),
         ({"a": {"b": 2}}, ["a"], {"b": 2}),
